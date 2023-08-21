@@ -1,22 +1,19 @@
+
 module.exports = (app) => {
-    // import express
-    // import function from controller
-    const Product = require("../controller/product");
-  
-    // init express router
-    var router = require("express").Router();
-  
-    // Get all products
-    router.get("/products", Product.showProducts);
-    // Get single product
-    router.get("/product/:id", Product.getProductId);
-    // Create new product
-    router.post("/products", Product.createProduct);
-    // Update a product
-    router.put("/product/:id", Product.updateProduct);
-    // Delete a product
-    router.delete("/product/:id", Product.deleteProduct);
-  
-    app.use("/api/products", router);
-  };
-  
+  const product = require("../controller/product.js");
+
+  // init express router
+  var router = require("express").Router();
+
+  // Get all products
+  router.get("/products", product.showProducts);
+  // Get single product
+  router.get("/product/:id", product.getProductId);
+  // Create new product
+  router.post("/products", product.createProduct);
+  // Update a product
+  router.put("/products/:id", product.updateProduct);
+  // Delete a product
+  router.delete("/products/:id", product.deleteProduct);
+
+};

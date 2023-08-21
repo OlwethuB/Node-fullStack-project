@@ -1,5 +1,5 @@
 // import connection
-const db = require("../config");
+const db = require("../config/database");
 
 class Products {
   // Get all products

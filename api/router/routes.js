@@ -1,5 +1,5 @@
-
 module.exports = (app) => {
+  const bodyParser = require("body-parser");
   const product = require("../controller/product.js");
 
   // init express router
@@ -16,4 +16,31 @@ module.exports = (app) => {
   // Delete a product
   router.delete("/products/:id", product.deleteProduct);
 
+  // import all model's objects
+  const { users } = require("../model/users");
+
+  // user's router
+  router.get("/users", (req, res) => {
+    users.fetchUsers(req, res);
+  });
+
+  router.get("/user/:id", (req, res) => {
+    users.fetchUser(req, res);
+  });
+
+  router.post("/register", bodyParser.json(), (req, res) => {
+    users.register(req, res);
+  });
+
+  router.put("/user/:id", bodyParser.json(), (req, res) => {
+    users.updateUser(req, res);
+  });
+
+  router.patch("/user/:id", bodyParser.json(), (req, res) => {
+    users.updateUser(req, res);
+  });
+
+  router.delete("/user/:id", bodyParser.json(), (req, res) => {
+    users.deleteUser(req, res);
+  });
 };

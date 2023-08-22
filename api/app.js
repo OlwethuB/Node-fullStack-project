@@ -10,6 +10,10 @@ const express = require("express");
 const app = express(); // Init express
 const port = process.env.PORT || 5000; // Port...
 
+const fs = require('fs');
+const http = require('http');
+
+
 app.use(express.json()); // Use express json
 
 // Use cors
@@ -19,6 +23,14 @@ app.use(cors(), cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 // app.use(cookieParser());
+
+http.createServer(function (req, res) {
+  fs.readFile('index.html', function(err, data) {
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write(data);
+    return res.end();
+  });
+});
 
 // Use router
 app.use("/", router);

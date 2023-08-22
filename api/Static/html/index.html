@@ -1,11 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
     <title>FULLSTACK END OF MODULE PROJECT</title>
 </head>
+
 <body>
-    <h1> </h1>
+    <h1> API Descriptions </h1>
+
+    <table class="GeneratedTable">
+        <thead>
+            <tr>
+                <th> HTTP Method </th>
+                <th> Path </th>
+                <th> Description </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th colspan="3">Home</th>
+            </tr>
+            <tr>
+                <td> Get </td>
+                <td> /(home page) </td>
+                <td> This directs us to the the 'front' page, the very first thing we see when we open or run the app.</td>
+            </tr>
+            <tr>
+                <th colspan="3">Users</th>
+            </tr>
+            <tr>
+                <td> Get </td>
+                <td> /users</td>
+                <td> Display a list of users </td>
+            </tr>
+            <tr>
+                <td> Get </td>
+                <td> /user/:id </td>
+                <td> Display a single user </td>
+            </tr>
+            <tr>
+                <td> Post </td>
+                <td> /user </td>
+                <td> To register a new user </td>
+            </tr>
+            <tr>
+                <td> Patch/Put </td>
+                <td> /users/:id </td>
+                <td> To modify a user’s record OR Update user’s record </td>
+            </tr>
+            <tr>
+                <td> Delete </td>
+                <td> /user/:id </td>
+                <td> To delete a single user </td>
+            </tr>
+            <tr>
+                <th colspan="3">Products</th>
+            </tr>
+            <tr>
+                <td> Get </td>
+                <td> /products </td>
+                <td> Display a list of products </td>
+            </tr>
+            <tr>
+                <td> Get </td>
+                <td> /products/:id </td>
+                <td> Display a single product </td>
+            </tr>
+            <tr>
+                <td> Post </td>
+                <td> /products </td>
+                <td> To add a new product </td>
+            </tr>
+            <tr>
+                <td> Put/Patch </td>
+                <td> /product/:id </td>
+                <td> Modify or replace a product’s record </td>
+            </tr>
+            <tr>
+                <td> Delete </td>
+                <td> /product/:id </td>
+                <td> Delete a product </td>
+            </tr>
+        </tbody>
+    </table>
 </body>
+
 </html>

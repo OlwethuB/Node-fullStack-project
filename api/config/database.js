@@ -9,7 +9,7 @@ const db = createPool ({
     password: process.env.db_pass,
     database: process.env.db_name,
     multipleStatements: true,
-    connectionLimit: 30
+    connectionLimit: 5
 });
 
 db.getConnection((error) => {

@@ -3,7 +3,7 @@
     <div class="hero">
       <h1>Welcome to Luminous Orbs Jewels Store</h1>
       <p>Discover the finest selection of exquisite jewelry.</p>
-      <router-link to="/products" class="btn">Shop Now</router-link>
+      <router-link to="/products" class="btn btn-primary">Shop Now</router-link>
     </div>
   </div>
 </template>
@@ -15,6 +15,9 @@ export default {
 </script>
 
 <style scoped>
+/* Import Montserrat font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
 .home {
   display: flex;
   justify-content: center;
@@ -31,16 +34,19 @@ export default {
 }
 
 .hero h1 {
+  font-family: 'Montserrat', sans-serif;
   font-size: 3rem;
   margin-bottom: 1rem;
 }
 
 .hero p {
+  font-family: 'Montserrat', sans-serif;
   font-size: 1.2rem;
   margin-bottom: 2rem;
 }
 
 .btn {
+  font-family: 'Montserrat', sans-serif;
   background-color: grey;
   color: white;
   border: none;

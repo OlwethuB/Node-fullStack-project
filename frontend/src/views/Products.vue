@@ -2,7 +2,17 @@
   <div class="products">
     <h2 class="section-title">Discover Our Collection</h2>
     <div class="product-list">
-      <!-- Product cards here -->
+      <div class="product-card">
+        <img src="product1.jpg" alt="Product 1" />
+        <h3>Product Name</h3>
+        <p>Price: R1000</p>
+      </div>
+      <div class="product-card">
+        <img src="product2.jpg" alt="Product 2" />
+        <h3>Product Name</h3>
+        <p>Price: R149.99</p>
+      </div>
+      <!-- Add more product cards here -->
     </div>
   </div>
 </template>
@@ -16,11 +26,11 @@ export default {
 <style scoped>
 .products {
   padding: 4rem 0;
+  text-align: center;
 }
 
 .section-title {
   font-size: 2rem;
-  text-align: center;
   margin-bottom: 2rem;
 }
 
@@ -28,9 +38,9 @@ export default {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 2rem;
+  justify-items: center;
 }
 
-/* Product card styles */
 .product-card {
   background-color: white;
   border: 1px solid #e0e0e0;
@@ -38,6 +48,7 @@ export default {
   padding: 1rem;
   text-align: center;
   transition: transform 0.3s ease;
+  width: 100%;
 }
 
 .product-card:hover {

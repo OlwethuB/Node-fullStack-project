@@ -2,9 +2,9 @@
   <div class="contact">
     <h2 class="section-title">Contact Us</h2>
     <div class="contact-form">
-      <input type="text" placeholder="Your Name" />
-      <input type="email" placeholder="Your Email" />
-      <textarea placeholder="Your Message"></textarea>
+      <input type="text" placeholder="Your Name" class="input-field" />
+      <input type="email" placeholder="Your Email" class="input-field" />
+      <textarea placeholder="Your Message" class="textarea-field"></textarea>
       <button class="btn">Send Message</button>
     </div>
   </div>
@@ -17,9 +17,18 @@ export default {
 </script>
 
 <style scoped>
+/* Import Montserrat font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
 .contact {
   padding: 4rem 0;
   text-align: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
 }
 
 .contact-form {
@@ -27,8 +36,8 @@ export default {
   margin: 0 auto;
 }
 
-.contact-form input,
-.contact-form textarea {
+.input-field,
+.textarea-field {
   width: 100%;
   padding: 0.5rem;
   margin-bottom: 1rem;
@@ -36,11 +45,11 @@ export default {
   border-radius: 5px;
 }
 
-.contact-form textarea {
+.textarea-field {
   height: 150px;
 }
 
-.contact-form button {
+.btn {
   background-color: #ff69b4;
   color: white;
   border: none;
@@ -50,7 +59,7 @@ export default {
   transition: background-color 0.3s ease;
 }
 
-.contact-form button:hover {
+.btn:hover {
   background-color: #ff3385;
 }
 </style>

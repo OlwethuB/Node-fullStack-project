@@ -13,21 +13,33 @@
         <p>Phone: (123) 456-7890</p>
       </div>
       <div class="social-links">
-        <a href="#" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://www.facebook.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <img
-            src="https://i.postimg.cc/Fs7Z7nhg/facebook-icon.png"
+            src="https://i.postimg.cc/pTvW85ws/pngegg-3.png"
             alt="Facebook"
           />
         </a>
-        <a href="#" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://twitter.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <img
-            src="https://i.postimg.cc/N09Jj24L/twitter-icon.png"
+            src="https://i.postimg.cc/RVdH04Hr/x-logo-twitter-elon-musk-dezeen-2364-col-0-1-852x479.webp"
             alt="Twitter"
           />
         </a>
-        <a href="#" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://www.instagram.com/accounts/login/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <img
-            src="https://i.postimg.cc/Yp0wMP5Y/instagram-icon.png"
+            src="https://i.postimg.cc/tg2Pmy9t/pngegg-2.png"
             alt="Instagram"
           />
         </a>
@@ -44,19 +56,24 @@ export default {
 </script>
 
 <style scoped>
+/* Import Montserrat font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
 .footer {
   background-color: black;
   padding: 2rem 0;
   text-align: center;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .footer-content {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1rem;
 }
 
 .logo img {
@@ -66,6 +83,7 @@ export default {
 
 .contact-info p {
   font-size: 1rem;
+  margin: 0.2rem 0;
 }
 
 .social-links img {

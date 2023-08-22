@@ -5,20 +5,29 @@
       <img
         src="https://i.postimg.cc/SNJ81wdG/70c2e736f7cefcaa36feaf0a91e7fe80.jpg"
         alt="About Us"
+        class="about-image"
       />
-      <p>
+      <p class="about-text">
         Discover the history and passion behind our jewelry store. We are
         committed to offering the finest quality pieces and exceptional customer
         service.
       </p>
       <div class="owners">
         <div class="owner">
-          <img src="https://i.postimg.cc/0Q0dxDKd/download.jpg" alt="Owner 1" />
+          <img
+            src="https://i.postimg.cc/0Q0dxDKd/download.jpg"
+            alt="Owner 1"
+            class="owner-image"
+          />
           <h3>Liyabona Mxhalisa</h3>
           <p>Co-Founder & CEO</p>
         </div>
         <div class="owner">
-          <img src="https://i.postimg.cc/0Q0dxDKd/download.jpg" alt="Owner 2" />
+          <img
+            src="https://i.postimg.cc/0Q0dxDKd/download.jpg"
+            alt="Owner 2"
+            class="owner-image"
+          />
           <h3>Olwethu Bhiya</h3>
           <p>Co-Founder & Creative Director</p>
         </div>
@@ -37,6 +46,12 @@ export default {
 .about {
   padding: 4rem 0;
   text-align: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
 }
 
 .about-content {
@@ -47,13 +62,13 @@ export default {
   margin-top: 2rem;
 }
 
-.about-content img {
+.about-image {
   max-width: 100%;
   height: auto;
   border-radius: 5px;
 }
 
-.about-content p {
+.about-text {
   font-size: 1.2rem;
   max-width: 600px;
   color: #555;
@@ -70,7 +85,7 @@ export default {
   text-align: center;
 }
 
-.owner img {
+.owner-image {
   width: 100px;
   height: 100px;
   border-radius: 50%;

@@ -2,25 +2,42 @@
   <div class="products">
     <h2 class="section-title">Discover Our Collection</h2>
     <div class="product-list">
-      <div class="product-card">
-        <img src="product1.jpg" alt="Product 1" />
-        <h3>Product Name</h3>
-        <p>Price: R1000</p>
+      <div class="product-card" v-for="product in products" :key="product.id">
+        <div class="product-image">
+          <img :src="product.image" :alt="product.name" />
+        </div>
+        <div class="product-details">
+          <h3>{{ product.name }}</h3>
+          <p class="price">Price: R{{ product.price }}</p>
+        </div>
       </div>
-      <div class="product-card">
-        <img src="product2.jpg" alt="Product 2" />
-        <h3>Product Name</h3>
-        <p>Price: R149.99</p>
-      </div>
-      <!-- Add more product cards here -->
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
-  // Your component options
-}
+  data() {
+    return {
+      products: []
+    };
+  },
+  methods: {
+    async fetchProducts() {
+      try {
+        const response = await axios.get("http://localhost:3000/api/products");
+        this.products = response.data;
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  },
+  mounted() {
+    this.fetchProducts();
+  }
+};
 </script>
 
 <style scoped>
@@ -55,18 +72,21 @@ export default {
   transform: translateY(-5px);
 }
 
-.product-card img {
+.product-image img {
   max-width: 100%;
   height: auto;
-  margin-bottom: 1rem;
 }
 
-.product-card h3 {
+.product-details {
+  margin-top: 1rem;
+}
+
+.product-details h3 {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
 }
 
-.product-card p {
+.product-details .price {
   font-size: 1rem;
   color: #888;
 }

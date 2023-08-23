@@ -9,6 +9,8 @@ const db = createPool ({
     password: process.env.db_pass,
     database: process.env.db_name,
     multipleStatements: true,
+    waitForConnections: true,
+    queueLimit: 0,
     connectionLimit: 5
 });
 

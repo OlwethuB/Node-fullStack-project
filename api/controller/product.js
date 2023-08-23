@@ -1,9 +1,9 @@
     // importing functions from the product model
     const Product = require("../model/productModel");
-
+const product = new Product()
     // Get all products
     exports.showProducts = (req, res) => {
-        Product.getProducts((err, results) => {
+        product.getProducts((err, results) => {
             if (err){
                 res.send(err);
             } else{
@@ -14,7 +14,7 @@
     
     //  Get single product 
     exports.getProductId = (req, res) => {
-        Product.getProductId(req.params.id, (err,result) =>{
+        product.getProductId(req.params.id, (err,result) =>{
             if (err){
                 res.send(err);
             } else{
@@ -26,7 +26,7 @@
     // create a new product
     exports.createProduct = (req, res) => {
         const data = req.body;
-        Product.insertProduct(data, (err, results) =>{
+        product.insertProduct(data, (err, results) =>{
             if (err){
                 res.send(err);
             } else{
@@ -39,7 +39,7 @@
 exports.updateProduct = (req, res) => {
     const data = req.body;
     const id = req.params.id;
-    Product.updateProductById(data, id, (err, results) => {
+    product.updateProductById(data, id, (err, results) => {
         if (err){
             res.send(err);
         } else{
@@ -51,7 +51,7 @@ exports.updateProduct = (req, res) => {
 // delete product 
 exports.deleteProduct = (req, res) => {
     const id = req.params.id;
-    Product.deleteProductById(id, (err, results) => {
+    product.deleteProductById(id, (err, results) => {
         if (err){
             res.send(err);
         } else{

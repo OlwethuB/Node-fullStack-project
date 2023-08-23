@@ -1,9 +1,7 @@
-
-const Users = require('./users')
-const Products = require('./productModel')
+const Users = require("./users");
+const Products = require("./productModel");
 // Export all objects
 module.exports = {
-    users: new Users(),
-    products: new Products()
-}
-
+  users: new Users(),
+  products: new Products(),
+};

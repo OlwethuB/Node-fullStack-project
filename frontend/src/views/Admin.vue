@@ -1,22 +1,38 @@
 <template>
   <div class="admin">
     <h2 class="section-title">Admin Dashboard</h2>
-    <div class="admin-actions">
-      <router-link to="/admin/products" class="btn"
+    <div v-if="loggedIn" class="admin-actions">
+      <router-link to="/admin/products" class="btn btn-admin"
         >Manage Products</router-link
       >
-      <router-link to="/admin/users" class="btn">Manage Users</router-link>
+      <router-link to="/admin/users" class="btn btn-admin"
+        >Manage Users</router-link
+      >
       <!-- Add other links as needed -->
     </div>
-
+    <admin-login v-else @login="handleLogin"></admin-login>
     <!-- Router view to display the nested components based on the route -->
     <router-view />
   </div>
 </template>
 
 <script>
+import AdminLogin from './AdminLogin.vue';
+
 export default {
-  // Your component options
+  components: {
+    AdminLogin,
+  },
+  data() {
+    return {
+      loggedIn: false,
+    };
+  },
+  methods: {
+    handleLogin(isLoggedIn) {
+      this.loggedIn = isLoggedIn;
+    },
+  },
 };
 </script>
 
@@ -39,7 +55,7 @@ export default {
   margin-top: 2rem;
 }
 
-.btn {
+.btn-admin {
   background-color: #ff69b4;
   color: white;
   padding: 0.5rem 1rem;
@@ -51,7 +67,7 @@ export default {
   transition: background-color 0.3s ease;
 }
 
-.btn:hover {
+.btn-admin:hover {
   background-color: #ff3385;
 }
 </style>

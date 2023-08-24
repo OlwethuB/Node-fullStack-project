@@ -26,7 +26,7 @@ exports.getProductId = (req, res) => {
         result,
       });
     }
-  });
+  }); 
 };
 
 // create a new product
@@ -37,7 +37,7 @@ exports.createProduct = (req, res) => {
       res.send(err);
     } else {
       res.json({
-        status: statusCode,
+        status: res.statusCode,
         msg: "Product has been added",
       });
     }

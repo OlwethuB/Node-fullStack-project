@@ -8,7 +8,7 @@ class Users {
     db.query(query, (err, results) => {
       if (err) throw err;
       res.json({
-        status: res.statusCode,
+        status: res.statusCode,   
         results,
       });
     });
@@ -36,7 +36,7 @@ class Users {
       userPass: data.userPass,
     };
     // Query
-    const query = ` INSERT INTO User SET ?;`;
+    const query = ` INSERT INTO Users SET ?;`;
     db.query(query, [data], (err) => {
       if (err) throw err;
       // create token
@@ -46,7 +46,7 @@ class Users {
         httpOnly: true,
       });
       res.json({
-        status: statusCode,
+        status: res.statusCode,
         msg: "You are now Registered",
       });
     });

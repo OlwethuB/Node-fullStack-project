@@ -22,7 +22,7 @@ router.delete("/products/:id", product.deleteProduct);
 // user's router
 router.get("/users", (req, res) => {
   users.fetchUsers(req, res);
-});
+});    
 
 router.get("/user/:id", (req, res) => {
   users.fetchUser(req, res);

@@ -32,7 +32,8 @@ class Products {
 
   // insert product into database
   insertProduct = (data, result) => {
-    db.query("INSERT INTO Product SET?", [data], (err, results) => {
+    db.query(
+      "INSERT INTO Products SET ?", [data], (err, results) => {
       if (err) {
         console.log(err);
         result(err, null);
@@ -45,7 +46,7 @@ class Products {
   // update product to database
   updateProductById = (data, id, result) => {
     db.query(
-      "UPDATE Products SET prodName = ?, amount = ?, category = ?, prodUrl = ? WHERE prodID = ?",
+      "UPDATE Products SET prodName = ?, amount = ?, category = ?, prodUrl = ? WHERE prodID = ? ",
       [data.prodName, data.amount, data.category, data.prodUrl, id],
       (err, results) => {
         if (err) {

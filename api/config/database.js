@@ -11,7 +11,7 @@ const db = createPool ({
     multipleStatements: true,
     waitForConnections: true,
     queueLimit: 0,
-    connectionLimit: 5
+    connectionLimit: 60
 });
 
 db.getConnection((error) => {

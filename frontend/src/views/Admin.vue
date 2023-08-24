@@ -2,18 +2,22 @@
   <div class="admin">
     <h2 class="section-title">Admin Dashboard</h2>
     <div class="admin-actions">
-      <router-link to="/admin/users" class="btn">Manage Users</router-link>
       <router-link to="/admin/products" class="btn"
         >Manage Products</router-link
       >
+      <router-link to="/admin/users" class="btn">Manage Users</router-link>
+      <!-- Add other links as needed -->
     </div>
+
+    <!-- Router view to display the nested components based on the route -->
+    <router-view />
   </div>
 </template>
 
 <script>
 export default {
   // Your component options
-}
+};
 </script>
 
 <style scoped>

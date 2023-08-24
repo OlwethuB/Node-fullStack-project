@@ -1,7 +1,7 @@
+// frontend/src/views/Users.vue
 
 <template>
   <!-- Your component template -->
-// frontend/src/views/Users.vue
 </template>
 
 <script>

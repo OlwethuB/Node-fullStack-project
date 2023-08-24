@@ -1,5 +1,3 @@
-// frontend/src/router/index.js
-
 import { createRouter, createWebHistory } from "vue-router"
 import Home from "../views/Home.vue"
 import About from "../views/About.vue"
@@ -14,7 +12,38 @@ const routes = [
   { path: "/contact", component: Contact },
   { path: "/products", component: Products },
   { path: "/products/:id", component: ProductDetail },
-  { path: "/admin", component: Admin },
+  {
+    path: "/admin",
+    component: Admin,
+    children: [
+      {
+        path: "products",
+        component: () => import("@/views/AdminProducts.vue"),
+      },
+      {
+        path: "/admin/products/create",
+        component: () => import("@/views/AdminCreateProduct.vue"),
+      },
+      {
+        path: "/admin/products/:id/edit",
+        component: () => import("@/views/AdminEditProduct.vue"),
+      },
+      {
+        path: "/admin/users",
+        component: () => import("@/views/AdminUsers.vue"),
+      },
+      {
+        path: "/admin/users/create",
+        component: () => import("@/views/AdminCreateUser.vue"),
+      },
+      {
+        path: "/admin/users/:id/edit",
+        component: () => import("@/views/AdminEditUser.vue"),
+      },
+
+      // Add other nested routes here for different functionalities
+    ],
+  },
 ]
 
 const router = createRouter({

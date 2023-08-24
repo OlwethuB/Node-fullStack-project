@@ -2,13 +2,21 @@
   <div class="products">
     <h2 class="section-title">Discover Our Collection</h2>
     <div class="product-list">
-      <div class="product-card" v-for="product in products" :key="product.id">
+      <div
+        class="product-card"
+        v-for="product in products"
+        :key="product.prodID"
+      >
         <div class="product-image">
-          <img :src="product.image" :alt="product.name" />
+          <img
+            :src="product.prodUrl"
+            :alt="product.prodName"
+            class="img-fluid"
+          />
         </div>
         <div class="product-details">
-          <h3>{{ product.name }}</h3>
-          <p class="price">Price: R{{ product.price }}</p>
+          <h3>{{ product.prodName }}</h3>
+          <p class="price">Price: R{{ product.amount }}</p>
         </div>
       </div>
     </div>
@@ -27,10 +35,10 @@ export default {
   methods: {
     async fetchProducts() {
       try {
-        const response = await axios.get("http://localhost:3000/api/products");
-        this.products = response.data;
+        const response = await axios.get("https://node-project-fd1y.onrender.com/products");
+        this.products = response.data.results;
       } catch (error) {
-        console.error(error);
+        console.error("Error fetching products:", error);
       }
     }
   },
@@ -53,7 +61,7 @@ export default {
 
 .product-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   justify-items: center;
 }

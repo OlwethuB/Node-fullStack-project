@@ -11,7 +11,7 @@
     <div v-for="product in products" :key="product.prodID" class="product-card">
       <h4>{{ product.prodName }}</h4>
       <p>Price: R{{ product.amount }}</p>
-      <button @click="deleteProduct(product.prodID)" class="btn btn-delete">
+      <button @click="confirmDelete(product.prodID)" class="btn btn-delete">
         Delete
       </button>
     </div>
@@ -36,11 +36,17 @@ export default {
         console.error("Error fetching products:", error);
       }
     },
+    async confirmDelete(productId) {
+      const confirmed = confirm("Are you sure you want to delete this product?");
+      if (confirmed) {
+        await this.deleteProduct(productId);
+      }
+    },
     async deleteProduct(productId) {
       try {
         await axios.delete(`https://node-project-fd1y.onrender.com/products/${productId}`);
         // Refresh the list of products after deletion
-        this.fetchProducts();
+        await this.fetchProducts();
       } catch (error) {
         console.error("Error deleting product:", error);
       }
@@ -51,6 +57,7 @@ export default {
   }
 };
 </script>
+
 <style scoped>
 .admin-products {
   padding: 2rem;

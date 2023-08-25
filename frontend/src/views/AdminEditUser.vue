@@ -1,4 +1,3 @@
-<!-- AdminEditUser.vue -->
 <template>
   <div class="admin-edit-user">
     <h3>Edit User</h3>
@@ -22,7 +21,7 @@ import axios from "axios";
 export default {
   data() {
     return {
-      userId: null,
+      userId: null, // Get this from the route params
       editedUser: {
         username: "",
         email: "",
@@ -33,64 +32,44 @@ export default {
   methods: {
     async fetchUserDetails() {
       try {
-        const response = await axios.get(
-          `https://node-project-fd1y.onrender.com/users/${this.userId}`
-        );
-        this.editedUser = response.data.results[0];
+        const response = await axios.get(`https://node-project-fd1y.onrender.com/users${this.userId}`);
+        this.editedUser = response.data; // Assuming response is the user object
       } catch (error) {
         console.error("Error fetching user details:", error);
       }
     },
     async updateUser() {
       try {
-        await axios.put(
-          `https://node-project-fd1y.onrender.com/users/${this.userId}`,
-          this.editedUser
-        );
-        this.$router.push("/admin/users");
+        await axios.put(`https://node-project-fd1y.onrender.com/users${this.userId}`, this.editedUser);
+        this.$router.push("/admin/users"); // Redirect to users list after update
       } catch (error) {
         console.error("Error updating user:", error);
       }
     },
   },
   created() {
+    // Fetch the user details when the component is created
     this.userId = this.$route.params.id;
     this.fetchUserDetails();
   },
 };
 </script>
+
 <style scoped>
-.admin-users {
+.admin-edit-user {
   padding: 2rem;
 }
 
-.btn-create {
-  background-color: #4caf50;
+.btn-update {
+  background-color: #4285f4;
   color: white;
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 5px;
   text-decoration: none;
   font-size: 1rem;
-}
-
-.user-card {
-  background-color: white;
-  border: 1px solid #e0e0e0;
-  border-radius: 5px;
-  padding: 1rem;
-  margin-top: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.btn-delete {
-  background-color: #ff3333;
-  color: white;
-  padding: 0.3rem 0.5rem;
-  border: none;
-  border-radius: 5px;
   cursor: pointer;
 }
+
+/* Add your styling here */
 </style>

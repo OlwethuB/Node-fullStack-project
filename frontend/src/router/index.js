@@ -21,26 +21,25 @@ const routes = [
         component: () => import("@/views/AdminProducts.vue"),
       },
       {
-        path: "/admin/products/create",
+        path: "products/create", // Update path
         component: () => import("@/views/AdminCreateProduct.vue"),
       },
       {
-        path: "/admin/products/:id/edit",
+        path: "products/:id/edit", // Update path
         component: () => import("@/views/AdminEditProduct.vue"),
       },
       {
-        path: "/admin/users",
+        path: "users", // Update path
         component: () => import("@/views/AdminUsers.vue"),
       },
       {
-        path: "/admin/users/create",
+        path: "users/create", // Update path
         component: () => import("@/views/AdminCreateUser.vue"),
       },
       {
-        path: "/admin/users/:id/edit",
+        path: "users/:id/edit", // Update path
         component: () => import("@/views/AdminEditUser.vue"),
       },
-
       // Add other nested routes here for different functionalities
     ],
   },

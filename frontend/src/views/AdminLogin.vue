@@ -20,7 +20,7 @@ export default {
   methods: {
     login() {
       // Simulate basic authentication (replace with your real logic)
-      if (this.username === 'Liyabona Mxhalisa' && this.password === '12') {
+      if (this.username === 'Olwethu Bhiya' && this.password === '12') {
         this.$emit('login', true); // Emit a login event with a true value
       } else {
         alert('Invalid username or password');

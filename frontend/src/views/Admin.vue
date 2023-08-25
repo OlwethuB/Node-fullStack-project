@@ -1,18 +1,22 @@
 <template>
   <div class="admin">
     <h2 class="section-title">Admin Dashboard</h2>
-    <div v-if="loggedIn" class="admin-actions">
-      <router-link to="/admin/products" class="btn btn-admin"
-        >Manage Products</router-link
-      >
-      <router-link to="/admin/users" class="btn btn-admin"
-        >Manage Users</router-link
-      >
-      <!-- Add other links as needed -->
+    <div v-if="!loggedIn">
+      <admin-login @login="handleLogin" />
     </div>
-    <admin-login v-else @login="handleLogin"></admin-login>
-    <!-- Router view to display the nested components based on the route -->
-    <router-view />
+    <div v-else>
+      <div class="admin-actions">
+        <router-link to="/admin/products" class="btn btn-admin"
+          >Manage Products</router-link
+        >
+        <router-link to="/admin/users" class="btn btn-admin"
+          >Manage Users</router-link
+        >
+        <!-- Add other links as needed -->
+      </div>
+      <!-- Router view to display the nested components based on the route -->
+      <router-view />
+    </div>
   </div>
 </template>
 

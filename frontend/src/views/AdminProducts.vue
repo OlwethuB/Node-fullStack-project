@@ -2,13 +2,28 @@
   <div class="admin-products">
     <h3>Manage Products</h3>
 
-    <!-- Add a button to create a new product -->
-    <router-link to="/admin/products/create" class="btn btn-create"
-      >Create Product</router-link
-    >
+    <!-- Add sorting options -->
+    <label>
+      Sort By:
+      <select v-model="sortBy">
+        <option value="prodName">Name</option>
+        <option value="amount">Price</option>
+        <!-- Add more sorting options if needed -->
+      </select>
+    </label>
 
-    <!-- Display the list of products -->
-    <div v-for="product in products" :key="product.prodID" class="product-card">
+    <!-- Add search input -->
+    <label>
+      Search:
+      <input v-model="searchTerm" type="text" />
+    </label>
+
+    <!-- Display the list of products with filtering and search -->
+    <div
+      class="product-card"
+      v-for="product in filteredProducts"
+      :key="product.prodID"
+    >
       <h4>{{ product.prodName }}</h4>
       <p>Price: R{{ product.amount }}</p>
       <button @click="confirmDelete(product.prodID)" class="btn btn-delete">
@@ -24,8 +39,20 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      products: []
+      products: [],
+      sortBy: 'prodName', // Default sorting field
+      searchTerm: '', // Default search term
     };
+  },
+  computed: {
+    filteredProducts() {
+      const sortedProducts = this.products.slice().sort((a, b) => a[this.sortBy].localeCompare(b[this.sortBy]));
+      if (!this.searchTerm) {
+        return sortedProducts;
+      }
+      const searchTermLC = this.searchTerm.toLowerCase();
+      return sortedProducts.filter(product => product.prodName.toLowerCase().includes(searchTermLC));
+    },
   },
   methods: {
     async fetchProducts() {
@@ -61,16 +88,6 @@ export default {
 <style scoped>
 .admin-products {
   padding: 2rem;
-}
-
-.btn-create {
-  background-color: #4caf50;
-  color: white;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 5px;
-  text-decoration: none;
-  font-size: 1rem;
 }
 
 .product-card {

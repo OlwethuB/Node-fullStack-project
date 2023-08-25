@@ -15,7 +15,6 @@
         <h4>{{ user.firstName }} {{ user.lastName }}</h4>
         <p>Role: {{ user.userRole }}</p>
         <p>Email: {{ user.emailAdd }}</p>
-        <!-- Display other user information as needed -->
         <router-link
           :to="`/admin/users/${user.userID}/edit`"
           class="btn btn-edit"
@@ -30,7 +29,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios';
 
 export default {
   data() {
@@ -41,27 +40,28 @@ export default {
   methods: {
     async fetchUsers() {
       try {
-        const response = await axios.get("https://node-project-fd1y.onrender.com/users");
+        const response = await axios.get('https://node-project-fd1y.onrender.com/users');
         this.users = response.data.results;
       } catch (error) {
-        console.error("Error fetching users:", error);
+        console.error('Error fetching users:', error);
       }
     },
     async deleteUser(userId) {
       try {
         await axios.delete(`https://node-project-fd1y.onrender.com/users/${userId}`);
-        this.fetchUsers();
+        // Remove the deleted user from the list
+        this.users = this.users.filter(user => user.userID !== userId);
       } catch (error) {
-        console.error("Error deleting user:", error);
+        console.error('Error deleting user:', error);
       }
     },
   },
   mounted() {
     this.fetchUsers();
+    this.deleteUser();
   },
 };
 </script>
-
 <style scoped>
 .admin-users {
   padding: 2rem;
@@ -94,6 +94,10 @@ export default {
   object-fit: cover;
   border-radius: 50%;
   margin-right: 1rem;
+}
+
+.user-details {
+  flex: 1;
 }
 
 .btn-edit {

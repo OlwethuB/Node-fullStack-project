@@ -1,10 +1,40 @@
 <template>
-  <div class="products">
+  <div class="products container">
     <h2 class="section-title">Discover Our Collection</h2>
-    <div class="product-list">
+    <div class="controls row">
+      <div class="col-md-4">
+        <label for="sortBy">Sort By:</label>
+        <select v-model="sortBy" id="sortBy" class="form-select">
+          <option value="prodName">Name</option>
+          <option value="amount">Price</option>
+          <!-- Add more sorting options if needed -->
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label for="filterBy">Filter By Category:</label>
+        <select v-model="filterBy" id="filterBy" class="form-select">
+          <option value="">All</option>
+          <option value="Necklace">Necklace</option>
+          <option value="Watch">Watch</option>
+          <option value="Ring set">Ring set</option>
+          <option value="Bracelet">Bracelet</option>
+          <!-- Add more filter options if needed -->
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label for="searchTerm">Search:</label>
+        <input
+          v-model="searchTerm"
+          id="searchTerm"
+          type="text"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <div class="product-list row">
       <div
-        class="product-card"
-        v-for="product in products"
+        class="col-md-4 product-card"
+        v-for="product in searchedProducts"
         :key="product.prodID"
       >
         <div class="product-image">
@@ -24,13 +54,38 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
   data() {
     return {
-      products: []
+      products: [],
+      sortBy: "prodName", // Default sorting field
+      filterBy: "", // Default filter value
+      searchTerm: "", // Default search term
     };
+  },
+  computed: {
+    sortedProducts() {
+      const sorted = [...this.products];
+      sorted.sort((a, b) => a[this.sortBy].localeCompare(b[this.sortBy]));
+      return sorted;
+    },
+    filteredProducts() {
+      if (!this.filterBy) {
+        return this.sortedProducts;
+      }
+      return this.sortedProducts.filter((product) => product.category === this.filterBy);
+    },
+    searchedProducts() {
+      if (!this.searchTerm) {
+        return this.filteredProducts;
+      }
+      const searchTermLC = this.searchTerm.toLowerCase();
+      return this.filteredProducts.filter((product) =>
+        product.prodName.toLowerCase().includes(searchTermLC)
+      );
+    },
   },
   methods: {
     async fetchProducts() {
@@ -40,11 +95,11 @@ export default {
       } catch (error) {
         console.error("Error fetching products:", error);
       }
-    }
+    },
   },
   mounted() {
     this.fetchProducts();
-  }
+  },
 };
 </script>
 
@@ -56,6 +111,10 @@ export default {
 
 .section-title {
   font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.controls {
   margin-bottom: 2rem;
 }
 

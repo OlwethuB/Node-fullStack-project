@@ -1,5 +1,21 @@
 <template>
   <div class="admin-login">
+    <!-- Loading "Spinner" -->
+    <div v-if="isLoading" class="loadingio-spinner-bean-eater-pgmqlvey3sh">
+      <div class="ldio-ugtlj07j4f">
+        <div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </div>
+    <!-- The display -->
     <h2 class="section-title">Admin Login</h2>
     <div class="login-form">
       <input v-model="username" type="text" placeholder="Username" />
@@ -15,13 +31,16 @@ export default {
     return {
       username: '',
       password: '',
+      isLoading: false,
     };
   },
   methods: {
     login() {
+      this.isLoading = true;
       // Simulate basic authentication (replace with your real logic)
       if (this.username === 'Olwethu Bhiya' && this.password === '12') {
         this.$emit('login', true); // Emit a login event with a true value
+        this.isLoading = false;
       } else {
         alert('Invalid username or password');
       }

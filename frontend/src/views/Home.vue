@@ -2,7 +2,7 @@
   <div class="home">
     <div class="hero">
       <h1>Welcome to Luminous Orbs Jewels Store</h1>
-      <p>Discover the finest selection of exquisite jewelry.</p>
+      <p>Discover the finest selection of exquisite jewellery.</p>
       <router-link to="/products" class="btn btn-primary">Shop Now</router-link>
     </div>
   </div>

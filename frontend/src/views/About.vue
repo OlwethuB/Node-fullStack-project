@@ -15,7 +15,7 @@
       <div class="owners">
         <div class="owner">
           <img
-            src="https://i.postimg.cc/0Q0dxDKd/download.jpg"
+            src="https://i.postimg.cc/T1FbYFFj/my-picture.jpg"
             alt="Owner 1"
             class="owner-image"
           />
@@ -24,7 +24,7 @@
         </div>
         <div class="owner">
           <img
-            src="https://i.postimg.cc/0Q0dxDKd/download.jpg"
+            src="https://i.postimg.cc/hv7c2QKR/C12-Olwethu-Bhiya-2.jpg"
             alt="Owner 2"
             class="owner-image"
           />

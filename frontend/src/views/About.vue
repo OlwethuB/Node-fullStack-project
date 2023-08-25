@@ -8,7 +8,7 @@
         class="about-image"
       />
       <p class="about-text">
-        Discover the history and passion behind our jewelry store. We are
+        Discover the history and passion behind our jewellery store. We are
         committed to offering the finest quality pieces and exceptional customer
         service.
       </p>
@@ -24,7 +24,7 @@
         </div>
         <div class="owner">
           <img
-            src="https://i.postimg.cc/hv7c2QKR/C12-Olwethu-Bhiya-2.jpg"
+            src="https://i.postimg.cc/kXzR30MF/C12-Olwethu-Bhiya-2.jpg"
             alt="Owner 2"
             class="owner-image"
           />

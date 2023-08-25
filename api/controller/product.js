@@ -16,7 +16,7 @@ exports.showProducts = (req, res) => {
 };
 
 //  Get single product
-exports.getProductId = (req, res) => {
+exports.fetchProductId = (req, res) => {
   product.getProductId(req.params.id, (err, result) => {
     if (err) {
       res.send(err);

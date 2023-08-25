@@ -15,7 +15,7 @@ class Products {
   };
 
   // Get single product
-  getProduct = (id, result) => {
+  getProductId = (id, result) => {
     db.query(
       "SELECT * FROM Products WHERE prodID = ?",
       [id],

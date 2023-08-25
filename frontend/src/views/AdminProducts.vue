@@ -2,6 +2,7 @@
   <div class="admin-products">
     <h3>Manage Products</h3>
 
+<<<<<<< HEAD
     <!-- Add sorting options -->
     <label>
       Sort By:
@@ -25,7 +26,15 @@
       class="product-card"
       v-for="product in filteredProducts"
       :key="product.prodID"
+=======
+    <!-- Add a button to create a new product -->
+    <router-link to="/admin/products/create" class="btn btn-create"
+      >Create Product</router-link
+>>>>>>> parent of 0b0a302 (Sorting and Filtering)
     >
+
+    <!-- Display the list of products -->
+    <div v-for="product in products" :key="product.prodID" class="product-card">
       <h4>{{ product.prodName }}</h4>
       <p>Price: R{{ product.amount }}</p>
       <button @click="confirmDelete(product.prodID)" class="btn btn-delete">
@@ -56,21 +65,15 @@ import axios from 'axios';
 export default {
   data() {
     return {
+<<<<<<< HEAD
       products: [],
       sortBy: 'prodName', // Default sorting field
       searchTerm: '', // Default search term
       isLoading: false,
+=======
+      products: []
+>>>>>>> parent of 0b0a302 (Sorting and Filtering)
     };
-  },
-  computed: {
-    filteredProducts() {
-      const sortedProducts = this.products.slice().sort((a, b) => a[this.sortBy].localeCompare(b[this.sortBy]));
-      if (!this.searchTerm) {
-        return sortedProducts;
-      }
-      const searchTermLC = this.searchTerm.toLowerCase();
-      return sortedProducts.filter(product => product.prodName.toLowerCase().includes(searchTermLC));
-    },
   },
   methods: {
     async fetchProducts() {
@@ -112,6 +115,16 @@ export default {
 <style scoped>
 .admin-products {
   padding: 2rem;
+}
+
+.btn-create {
+  background-color: #4caf50;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1rem;
 }
 
 .product-card {

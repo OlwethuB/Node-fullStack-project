@@ -1,6 +1,7 @@
 <template>
-  <div class="products container">
+  <div class="products">
     <h2 class="section-title">Discover Our Collection</h2>
+<<<<<<< HEAD
     <div class="controls row">
       <div class="col-md-4">
         <label for="sortBy">Sort By:</label>
@@ -50,9 +51,12 @@
     <!-- The display -->
 
     <div class="product-list row">
+=======
+    <div class="product-list">
+>>>>>>> parent of 0b0a302 (Sorting and Filtering)
       <div
-        class="col-md-4 product-card"
-        v-for="product in searchedProducts"
+        class="product-card"
+        v-for="product in products"
         :key="product.prodID"
       >
         <div class="product-image">
@@ -72,39 +76,21 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios';
 
 export default {
   data() {
     return {
+<<<<<<< HEAD
       products: [],
       sortBy: "prodName", // Default sorting field
       filterBy: "", // Default filter value
       searchTerm: "", // Default search term
       isLoading: false,
+=======
+      products: []
+>>>>>>> parent of 0b0a302 (Sorting and Filtering)
     };
-  },
-  computed: {
-    sortedProducts() {
-      const sorted = [...this.products];
-      sorted.sort((a, b) => a[this.sortBy].localeCompare(b[this.sortBy]));
-      return sorted;
-    },
-    filteredProducts() {
-      if (!this.filterBy) {
-        return this.sortedProducts;
-      }
-      return this.sortedProducts.filter((product) => product.category === this.filterBy);
-    },
-    searchedProducts() {
-      if (!this.searchTerm) {
-        return this.filteredProducts;
-      }
-      const searchTermLC = this.searchTerm.toLowerCase();
-      return this.filteredProducts.filter((product) =>
-        product.prodName.toLowerCase().includes(searchTermLC)
-      );
-    },
   },
   methods: {
     async fetchProducts() {
@@ -116,11 +102,11 @@ export default {
       } catch (error) {
         console.error("Error fetching products:", error);
       }
-    },
+    }
   },
   mounted() {
     this.fetchProducts();
-  },
+  }
 };
 </script>
 
@@ -132,10 +118,6 @@ export default {
 
 .section-title {
   font-size: 2rem;
-  margin-bottom: 2rem;
-}
-
-.controls {
   margin-bottom: 2rem;
 }
 

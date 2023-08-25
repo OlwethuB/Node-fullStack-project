@@ -1,18 +1,13 @@
+<!-- AdminCreateUser.vue -->
 <template>
   <div class="admin-create-user">
     <h3>Create User</h3>
     <form @submit.prevent="createUser">
-      <label for="firstName">First Name:</label>
-      <input v-model="user.firstName" id="firstName" />
-
-      <label for="lastName">Last Name:</label>
-      <input v-model="user.lastName" id="lastName" />
+      <label for="username">Username:</label>
+      <input v-model="newUser.username" id="username" />
 
       <label for="email">Email:</label>
-      <input v-model="user.emailAdd" id="email" />
-
-      <label for="password">Password:</label>
-      <input v-model="user.userPass" id="password" />
+      <input v-model="newUser.email" id="email" />
 
       <!-- Add more fields for other user details -->
 
@@ -22,39 +17,36 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
   data() {
     return {
-      user: {
-        firstName: '',
-        lastName: '',
-        emailAdd: '',
-        userPass: '',
+      newUser: {
+        username: "",
+        email: "",
         // Initialize other fields
       },
     };
   },
   methods: {
-    async register() {
+    async createUser() {
       try {
-        const response = await axios.post('https://node-project-fd1y.onrender.com/users', this.user);
-        // Optionally, you can navigate back to the users list page after creation
-        this.$router.push('/admin/users');
+        const response = await axios.post(
+          "https://node-project-fd1y.onrender.com/users",
+          this.newUser
+        );
+        this.$router.push("/admin/users");
       } catch (error) {
-        console.error('Error creating user:', error);
+        console.error("Error creating user:", error);
       }
     },
-  },
-  mounted() {
-    this.register();
   },
 };
 </script>
 
 <style scoped>
-.admin-create-user {
+.admin-users {
   padding: 2rem;
 }
 
@@ -66,16 +58,25 @@ export default {
   border-radius: 5px;
   text-decoration: none;
   font-size: 1rem;
-  cursor: pointer;
 }
 
-input {
-  width: 100%;
-  padding: 0.5rem;
-  margin-top: 0.2rem;
+.user-card {
+  background-color: white;
   border: 1px solid #e0e0e0;
   border-radius: 5px;
+  padding: 1rem;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* Additional styles for other form elements */
+.btn-delete {
+  background-color: #ff3333;
+  color: white;
+  padding: 0.3rem 0.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
 </style>
